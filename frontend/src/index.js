@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import HomePage from './frontend/pages/HomePage';
+
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+// import SignupPage from './pages/SignupPage';
+import HomePage from './pages/HomePage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

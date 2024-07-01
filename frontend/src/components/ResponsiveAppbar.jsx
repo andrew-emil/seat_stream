@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../assets/css/responiveAppbar.css";
 
 const ResponsiveAppbar = () => {
+	console.log("Appbar - render");
 	const [searchTerm, setSearchTerm] = useState("");
 	const handelChange = (e) => {
 		setSearchTerm(e.target.value);

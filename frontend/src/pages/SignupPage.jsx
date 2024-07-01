@@ -11,12 +11,12 @@ const SignupPage = () => {
 		phone: "",
 		password: "",
 	});
-	
-
+	// eslint-disable-next-line no-unused-vars
+	const [errorMessage, setErrorMessage] = useState("");
 	const API_PATH = "http://localhost:8000/auth.php";
 
-	const handleCountryCodeChange = (event) => {
-		setCountryCode(event.target.value);
+	const handleCountryCodeChange = (e) => {
+		setCountryCode(e.target.value);
 	};
 
 	const handleChange = (e) => {
@@ -49,7 +49,7 @@ const SignupPage = () => {
 		<>
 			<Appbar />
 			<div className="signup-container">
-				<form onSubmit={handleFormSubmit} className="my-form">
+				<form onSubmit={handleFormSubmit} className="signup-form">
 					<div className="form-group">
 						<label>
 							Username:
@@ -81,6 +81,13 @@ const SignupPage = () => {
 								<option value="+20">Egypt (+20)</option>
 								<option value="+1">USA (+1)</option>
 								<option value="+44">UK (+44)</option>
+								<option value="+91">India (+91)</option>
+								<option value="+61">Australia (+61)</option>
+								<option value="+81">Japan (+81)</option>
+								<option value="+49">Germany (+49)</option>
+								<option value="+33">France (+33)</option>
+								<option value="+55">Brazil (+55)</option>
+								<option value="+86">China (+86)</option>
 							</select>
 							<input
 								type="tel"
@@ -108,6 +115,7 @@ const SignupPage = () => {
 							Create Account
 						</button>
 					</div>
+					{errorMessage && <div className="error-message">{errorMessage}</div>}
 				</form>
 			</div>
 			<Footer />

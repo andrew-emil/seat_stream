@@ -1,9 +1,9 @@
 import React from "react";
 import appStore from "../assets/app-store-badge.png";
-import '../assets/css/footer.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../assets/css/footer.css";
 
 const Footer = () => {
+	
 	return (
 		<footer className="footer">
 			<div className="footer-container">
@@ -11,9 +11,9 @@ const Footer = () => {
 					<div className="col-lg-3 col-md-6 col-sm-12">
 						<h5 className="footer__title">About Us</h5>
 						<p className="footer__text">
-							Seat Stream Cinemas is the Middle East's largest cinema chain, operating
-							over 200 cinemas across the region with a commitment to delivering
-							the best movie experiences for everyone.
+							Seat Stream Cinemas is the Middle East's largest cinema chain,
+							operating over 200 cinemas across the region with a commitment to
+							delivering the best movie experiences for everyone.
 						</p>
 					</div>
 					<div className="col-lg-3 col-md-6 col-sm-12">
@@ -81,22 +81,22 @@ const Footer = () => {
 						<ul className="footer__social">
 							<li className="footer__social-item">
 								<a href="/" className="footer__social-link">
-									<i className="fab fa-facebook-f"></i>
+									{/* <i className="fab fa-facebook-f"></i> */}
 								</a>
 							</li>
 							<li className="footer__social-item">
 								<a href="/" className="footer__social-link">
-									<i className="fab fa-twitter"></i>
+									{/* <i className="fab fa-twitter"></i> */}
 								</a>
 							</li>
 							<li className="footer__social-item">
 								<a href="/" className="footer__social-link">
-									<i className="fab fa-instagram"></i>
+									{/* <i className="fab fa-instagram"></i> */}
 								</a>
 							</li>
 							<li className="footer__social-item">
 								<a href="/" className="footer__social-link">
-									<FontAwesomeIcon className="fa-youtube"></FontAwesomeIcon>
+									{/* <FontAwesomeIcon className="fa-bars"></FontAwesomeIcon> */}
 								</a>
 							</li>
 						</ul>
@@ -114,4 +114,4 @@ const Footer = () => {
 	);
 };
 
-export default Footer;
+export default React.memo(Footer);

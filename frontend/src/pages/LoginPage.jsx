@@ -6,12 +6,10 @@ import Footer from "./../components/Footer";
 
 const LoginPage = () => {
 	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		phone: "",
+		usernameOrEmail: "",
 		password: "",
 	});
-
+	const [errorMessage, setErrorMessage] = useState("");
 	const API_PATH = "http://localhost:8000/auth.php";
 
 
@@ -42,7 +40,7 @@ const LoginPage = () => {
 		<>
 			<Appbar />
 			<div className="login-container">
-				<form onSubmit={handleFormSubmit} className="my-form">
+				<form onSubmit={handleFormSubmit} className="login-form">
 					<div className="form-group">
 						<label>
 							Username or Email:
@@ -50,9 +48,9 @@ const LoginPage = () => {
 								type="text"
 								name="name"
 								className="inputfield"
-								value={formData.name}
+								value={formData.usernameOrEmail}
 								onChange={handleChange}
-								placeholder="Username"
+								placeholder="Username or Email"
 							/>
 						</label>
 						<label>
@@ -71,6 +69,7 @@ const LoginPage = () => {
 							Login
 						</button>
 					</div>
+					{errorMessage && <div className="error-message">{errorMessage}</div>}
 				</form>
 			</div>
 			<Footer />

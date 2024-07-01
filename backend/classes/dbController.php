@@ -8,17 +8,20 @@ class DBController
     private string $dbName = 'cinema';
     private $conn;
 
-
-    public function openConnection(): bool
+    public function __construct()
     {
         $this->conn = new mysqli($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbName);
+    }
+    public function openConnection(): bool
+    {
+
         if ($this->conn->connect_error) {
             throw new Exception("Connection failed: " . $this->conn->connect_error);
             return false;
         }
         return true;
     }
-    
+
     public function closeConnection(): bool
     {
         if ($this->conn) {
@@ -97,12 +100,18 @@ class DBController
 
     public function select($where = null, $tableName): array
     {
+        if ($this->conn === null) {
+            die(json_encode(["error" => "Database connection is not established."]));
+        }
         $sql = "SELECT * FROM " .  $tableName;
         if ($where) {
             $sql .= " WHERE " . $where;
         }
 
         $stmt = $this->conn->prepare($sql);
+        if ($stmt === false) {
+            die(json_encode(["error" => "Error preparing statement: " . $this->conn->error]));
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 

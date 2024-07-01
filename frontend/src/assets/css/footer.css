@@ -23,6 +23,7 @@
 .footer__title {
 	font-size: 18px;
 	margin-bottom: 15px;
+	font-weight: bold;
 }
 
 .footer__text {
@@ -42,6 +43,10 @@
 .footer__link {
 	color: #121212;
 	text-decoration: none;
+}
+
+.footer__link:hover {
+	text-decoration: underline;
 }
 
 .footer__social {

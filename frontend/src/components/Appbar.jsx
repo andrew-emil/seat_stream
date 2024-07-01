@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ResponsiveAppbar from "./ResponsiveAppbar";
 
 import "../assets/css/appbar.css";
-import ResponsiveAppbar from "./ResponsiveAppbar";
 
 const Appbar = () => {
 	const [searchTerm, setSearchTerm] = useState("");
-	const [menuOpen, setMenuopen] = useState(false);
+	const [menuOpen, setMenuOpen] = useState(false);
 	const isMaxWidth = useMediaQuery("(max-width: 991px)");
 
-	const handelChange = (e) => {
+	const handleChange = (e) => {
 		setSearchTerm(e.target.value);
 	};
 
-	const handelSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log(searchTerm);
 	};
 
 	const handleButtonClick = () => {
-		setMenuopen(!menuOpen);
+		setMenuOpen(!menuOpen);
 	};
 
 	useEffect(() => {
-		if(!isMaxWidth){
-			setMenuopen(false)
+		if (!isMaxWidth && menuOpen) {
+			setMenuOpen(false);
 		}
-	}, [isMaxWidth])
+	}, [isMaxWidth, menuOpen]);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,11 +38,9 @@ const Appbar = () => {
 				<button
 					className="navbar-toggler"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="/navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
-					aria-expanded="false"
 					onClick={handleButtonClick}
+					aria-controls="navbarSupportedContent"
+					aria-expanded={menuOpen}
 					aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
@@ -59,28 +58,29 @@ const Appbar = () => {
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="/" aria-disabled="false">
+							<a className="nav-link" href="/">
 								Food & Drinks
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="/" aria-disabled="false">
+							<a className="nav-link" href="/">
 								Login
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="/" aria-disabled="false">
+							<a className="nav-link" href="/">
 								Sign Up
 							</a>
 						</li>
 					</ul>
-					<form className="d-flex" onSubmit={handelSubmit}>
+					<form className="d-flex" onSubmit={handleSubmit}>
 						<input
 							className="form-control me-2"
 							type="search"
 							placeholder="Search"
 							aria-label="Search"
-							onChange={handelChange}
+							onChange={handleChange}
+							value={searchTerm}
 						/>
 						<button className="btn btn-outline-success" type="submit">
 							Search
@@ -92,4 +92,4 @@ const Appbar = () => {
 	);
 };
 
-export default Appbar;
+export default React.memo(Appbar);
